@@ -10,7 +10,6 @@ import JSON5 from 'json5';
 import runningLottie from './14470-phone-running.json';
 import robotLottie from './10178-c-bot.json';
 import robotDizzyLottie from './13680-robot-call.json';
-import loveLottie from './13682-heart.json';
 
 const { isDev } = window;
 
@@ -539,8 +538,6 @@ const App = memo(() => {
     await startInstautoAction(async () => runTestCode());
   }, [startInstautoAction]);
 
-  const onDonateClick = () => electron.shell.openExternal('https://mifi.no/thanks');
-
   return (
     <>
       <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -559,12 +556,6 @@ const App = memo(() => {
               <div>
                 <p>Leave the app running on your computer and keep it connected to power and prevent it from sleeping and the bot will work for you while you are doing more useful things.</p>
                 <p>Please don&apos;t close/minimize the other window <span role="img" aria-label="Robot">🤖</span></p>
-              </div>
-
-              <div style={{ marginBottom: 20 }}>
-                <b>No ads. No tracking. Just open source love.</b><br />
-                I built this for free for everyone to enjoy, but it needs constant updates to make sure it works whenever Instagram changes something.<br />
-                <div role="button" tabIndex="0" style={{ cursor: 'pointer', color: 'rgba(0,0,0,0.6)', fontWeight: 'bold' }} onClick={onDonateClick}>❤️ Consider supporting my work</div>
               </div>
 
               <LogView fontSize={10} logs={logs} />
@@ -679,17 +670,6 @@ const App = memo(() => {
           </div>
 
           {instautoData && !running && <StatisticsBanner data={instautoData} />}
-
-          <div style={{ position: 'fixed', right: 5, bottom: 5, background: 'rgba(255,255,255,0.6)', display: 'flex', alignItems: 'center' }}>
-            <Button appearance="minimal" onClick={() => electron.shell.openExternal('https://mifi.no/')}>More apps by mifi.no</Button>
-            <Lottie
-              loop
-              play={!running}
-              goTo={running ? 50 : undefined}
-              animationData={loveLottie}
-              style={{ width: 50, height: 50, margin: -10 }}
-            />
-          </div>
         </div>
       </div>
 
